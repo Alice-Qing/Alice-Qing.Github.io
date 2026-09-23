@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <title>awesome</title>
     <style>
-        /* 1. 基础设置：白底带一点浅绿色 */
+       
         body {
-            background-color: #f0fff4; /* 浅绿色 */
-            color: #333333;            /* 深灰色文字，比纯黑柔和 */
+            background-color: #f0fff4; 
+            color: #333333;            
             font-family: 'Arial', sans-serif;
             margin: 0;
-            text-align: center;        /* 全部居中 */
+            text-align: center;       
         }
 
-        /* 2. 第一屏：Hero Display 弹出效果 */
+       
         .hero-section {
-            height: 100vh; /* 占满整个屏幕高度 */
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -25,19 +25,19 @@
         .hero-title {
             font-size: 4rem;
             margin: 0;
-            /* 动画效果：从上方掉下来淡入 */
+            
             animation: slideDown 1s ease-out;
         }
 
         .hero-name {
             font-size: 2.5rem;
-            color: #2e8b57; /* 深绿色名字，配合主题 */
+            color: #2e8b57; 
             margin-top: 20px;
-            /* 延迟0.5秒后再出现 */
+           
             animation: slideDown 1s ease-out 0.5s both;
         }
 
-        /* 3. 下方图片区 */
+        
         .content-section {
             padding: 60px 20px;
         }
@@ -53,7 +53,7 @@
             margin-top: 10px;
         }
 
-        /* 4. 图片样式 */
+       
         .image-gallery {
             display: flex;
             justify-content: center;
@@ -63,13 +63,13 @@
         }
 
         .image-gallery img {
-            width: 300px;       /* 设置图片宽度，防止太大 */
-            max-width: 90%;     /* 手机上也合适 */
-            border-radius: 15px;/* 圆角 */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* 淡淡的阴影 */
+            width: 300px;      
+            max-width: 90%;    
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        /* 5. 定义“弹出”动画 */
+      
         @keyframes slideDown {
             from {
                 opacity: 0;
@@ -84,28 +84,28 @@
 </head>
 <body>
 
-    <!-- 第一部分：Hero Display -->
+  
     <div class="hero-section">
         <h1 class="hero-title">Hero display</h1>
         <h2 class="hero-name">张天硕</h2>
     </div>
 
-    <!-- 第二部分：AI 图片 -->
+   
     <div class="content-section">
         <h3>Ai generated images╮(￣▽￣"")╭</h3>
         <div class="image-gallery">
-            <!-- 注意把 src 换成你刚刚上传的图片名字 -->
-            <img src="636dadb2a1b725e7bb99f64126ad98d4.jpeg" alt="AI生成图片1">
-            <img src="bcd52fa14e22097cf27a78c5cb37af74.jpeg" alt="AI生成图片2">
+           
+            <img src="636dadb2a1b725e7bb99f64126ad98d4.jpeg" alt="AIgenerated1">
+            <img src="bcd52fa14e22097cf27a78c5cb37af74.jpeg" alt="AIgenerated2">
         </div>
     </div>
 
-    <!-- 第三部分：Real Images -->
+   
     <div class="content-section">
         <h3>Real images</h3>
         <p class="sub-text">much more decent(´▽｀)</p>
    <div class="image-gallery">
-            <!-- 注意把 src 换成你刚刚上传的图片名字 -->
+          
             <img src="9011fbbf2773682980ff31469a3c4ae0.jpeg" alt="Real image1">
             <img src="eb982351c54ba1561888ea66d1d06c99.jpeg" alt="Real image2">
         </div>
