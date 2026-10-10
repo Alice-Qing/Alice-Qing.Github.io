@@ -9,7 +9,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #f5fff8; /* 非常浅的绿色背景 */
+            background-color: #f5fff8;
             font-family: 'Arial', 'Microsoft YaHei', sans-serif;
             color: #333333;
             text-align: center;
@@ -18,7 +18,7 @@
 
         /* 每一屏的通用设置 */
         section {
-            min-height: 100vh; /* 每一屏都至少占满整个屏幕高度 */
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -27,18 +27,31 @@
             box-sizing: border-box;
         }
 
-        /* 动画效果：从上方掉下来淡入 */
+        /* 动画效果：从上往下掉落 */
         @keyframes slideDown {
             0% { opacity: 0; transform: translateY(-50px); }
             100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 动画效果：缓慢浮现（淡入） */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         .animate-text {
             animation: slideDown 1.2s ease-out both;
         }
 
+        .fade-in-text {
+            animation: fadeIn 2s ease-in both; /* 2秒的缓慢出现 */
+        }
+
         /* 延迟动画 */
         .delay-1 { animation-delay: 0.5s; }
+        .delay-2 { animation-delay: 2s; }
+        .delay-3 { animation-delay: 4s; }
+        .delay-4 { animation-delay: 6s; }
 
         /* 第一屏：Hero Display */
         .hero-title {
@@ -66,10 +79,10 @@
             transition: transform 0.3s ease;
         }
         .image-container img:hover {
-            transform: scale(1.03); /* 鼠标悬停微微放大 */
+            transform: scale(1.03);
         }
 
-        /* 第四屏：Slogan（鲜艳突出） */
+        /* 第四屏：Slogan */
         .slogan-section {
             background-color: #f0fff4;
         }
@@ -81,7 +94,6 @@
         .slogan-text {
             font-size: 4rem;
             font-weight: 900;
-            /* 鲜艳的渐变色文字 */
             background: linear-gradient(45deg, #ff512f, #dd2476, #ff512f);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -114,6 +126,49 @@
             color: #2e8b57;
             font-weight: bold;
         }
+
+        /* 第六屏：Years later (新增) */
+        .future-section {
+            background-color: #ffffff;
+        }
+        .years-later {
+            font-size: 3rem;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        .maybe-me {
+            font-size: 2rem;
+            color: #2e8b57;
+            margin-bottom: 40px;
+        }
+        .future-image {
+            width: 80%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+        }
+        .future-name {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        .future-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            max-width: 600px;
+        }
+        .future-text p {
+            margin-bottom: 15px;
+        }
+        .future-text .big-word {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2e8b57;
+        }
+
     </style>
 </head>
 <body>
@@ -128,16 +183,14 @@
     <section>
         <h3 class="section-title">This is me(*≧ω≦)</h3>
         <div class="image-container">
-            <!-- 注意将 image1.jpg 替换为你上传的动漫图名字 -->
             <img src="去除图片水印.png" alt="我的二次元形象">
         </div>
     </section>
 
     <!-- 第三屏：Real self -->
     <section>
-        <h3 class="section-title">Well I prefer my real self╮(￣▽￣"")╭</h3>
+        <h3 class="section-title">Well I prefer my realself╮(￣▽￣"")╭</h3>
         <div class="image-container">
-            <!-- 注意将 image2.jpg 替换为你上传的真人照片名字 -->
             <img src="4172.JPG" alt="我的真人照片">
         </div>
     </section>
@@ -159,28 +212,40 @@
         </div>
     </section>
 
+    <!-- 第六屏：Years later (新增) -->
+    <section class="future-section">
+        <!-- 注意：将 image3.jpg 替换为你上传的第三张图片名字 -->
+        <div class="years-later fade-in-text">Years later……</div>
+        <div class="maybe-me fade-in-text delay-1">May be this will be me?</div>
+        
+        <img src="image3.jpg" alt="未来的我" class="future-image fade-in-text delay-2">
+        <div class="future-name fade-in-text delay-2">Yeqing Zhang 2.0</div>
+        
+        <div class="future-text fade-in-text delay-3">
+            <p class="big-word">Keep going upwards</p>
+            <p>Lever-up my academic capability and the control over my own life.</p>
+            <p>New: I welcome everything new to enter into my life ---- with vase possibility !!!!</p>
+        </div>
+    </section>
+
     <!-- JavaScript：实现停留一会儿后自动下滑 -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // 获取所有的 section 元素
             const sections = document.querySelectorAll("section");
             let currentSection = 0;
 
-            // 自动下滑函数
             function autoScroll() {
-                // 如果还没到最后一块
                 if (currentSection < sections.length - 1) {
                     currentSection++;
-                    // 平滑滚动到下一个 section
                     sections[currentSection].scrollIntoView({ behavior: 'smooth' });
                 }
             }
 
-            // 设置定时器：每隔 4 秒自动下滑一次
-            // 你可以修改 4000 这个数字（单位是毫秒），比如 5000 就是 5 秒
-            let scrollInterval = setInterval(autoScroll, 4000);
+            // 【改动在这里】放慢了自动下滑速度
+            // 4000 代表 4 秒，现在我改成了 7000（7秒），你可以随时修改这个数字
+            let scrollInterval = setInterval(autoScroll, 7000);
 
-            // 如果用户手动滚动了页面，就取消自动滚动，防止干扰用户
+            // 如果用户手动滚动了页面，就取消自动滚动
             window.addEventListener('wheel', () => clearInterval(scrollInterval));
             window.addEventListener('touchmove', () => clearInterval(scrollInterval));
         });
