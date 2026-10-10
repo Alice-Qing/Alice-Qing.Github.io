@@ -190,27 +190,7 @@
         </div>
     </section>
 
-    <!-- JavaScript：实现停留一会儿后自动下滑 -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const sections = document.querySelectorAll("section");
-            let currentSection = 0;
-
-            function autoScroll() {
-                if (currentSection < sections.length - 1) {
-                    currentSection++;
-                    sections[currentSection].scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-
-            // 放慢自动下滑速度：7000 毫秒（7秒）
-            let scrollInterval = setInterval(autoScroll, 7000);
-
-            // 如果用户手动滚动了页面，就取消自动滚动
-            window.addEventListener('wheel', () => clearInterval(scrollInterval));
-            window.addEventListener('touchmove', () => clearInterval(scrollInterval));
-        });
-    </script>
+    
 
 </body>
 </html>
