@@ -39,134 +39,86 @@
             100% { opacity: 1; }
         }
 
-        .animate-text {
-            animation: slideDown 1.2s ease-out both;
-        }
+        .animate-text { animation: slideDown 1.2s ease-out both; }
+        .fade-in-text { animation: fadeIn 2s ease-in both; }
 
-        .fade-in-text {
-            animation: fadeIn 2s ease-in both; /* 2秒的缓慢出现 */
-        }
-
-        /* 延迟动画 */
         .delay-1 { animation-delay: 0.5s; }
         .delay-2 { animation-delay: 2s; }
         .delay-3 { animation-delay: 4s; }
         .delay-4 { animation-delay: 6s; }
 
         /* 第一屏：Hero Display */
-        .hero-title {
-            font-size: 4rem;
-            margin: 0;
-            color: #2e8b57;
-        }
-        .hero-name {
-            font-size: 3rem;
-            margin-top: 20px;
-            font-weight: bold;
-        }
+        .hero-title { font-size: 4rem; margin: 0; color: #2e8b57; }
+        .hero-name { font-size: 3rem; margin-top: 20px; font-weight: bold; }
 
         /* 第二、三屏：图片展示 */
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #444;
-        }
+        .section-title { font-size: 2rem; margin-bottom: 20px; color: #444; }
         .image-container img {
-            width: 80%;
-            max-width: 500px;
-            border-radius: 20px;
+            width: 80%; max-width: 500px; border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.15);
             transition: transform 0.3s ease;
         }
-        .image-container img:hover {
-            transform: scale(1.03);
-        }
+        .image-container img:hover { transform: scale(1.03); }
 
         /* 第四屏：Slogan */
-        .slogan-section {
-            background-color: #f0fff4;
-        }
-        .slogan-title {
-            font-size: 2rem;
-            color: #666;
-            margin-bottom: 10px;
-        }
+        .slogan-section { background-color: #f0fff4; }
+        .slogan-title { font-size: 2rem; color: #666; margin-bottom: 10px; }
         .slogan-text {
-            font-size: 4rem;
-            font-weight: 900;
+            font-size: 4rem; font-weight: 900;
             background: linear-gradient(45deg, #ff512f, #dd2476, #ff512f);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             text-shadow: 2px 2px 10px rgba(255, 81, 47, 0.3);
             letter-spacing: 2px;
         }
 
         /* 第五屏：More about me */
         .about-content {
-            text-align: left;
-            max-width: 800px;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            line-height: 1.8;
-            font-size: 1.1rem;
-            color: #444;
+            text-align: left; max-width: 800px; background: rgba(255, 255, 255, 0.8);
+            padding: 40px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            line-height: 1.8; font-size: 1.1rem; color: #444;
         }
-        .about-content h2 {
-            text-align: center;
-            color: #2e8b57;
-            margin-bottom: 30px;
-            font-size: 2.2rem;
-        }
-        .about-content p {
-            margin-bottom: 20px;
-        }
-        .highlight {
-            color: #2e8b57;
-            font-weight: bold;
-        }
+        .about-content h2 { text-align: center; color: #2e8b57; margin-bottom: 30px; font-size: 2.2rem; }
+        .about-content p { margin-bottom: 20px; }
+        .highlight { color: #2e8b57; font-weight: bold; }
 
-        /* 第六屏：Years later (新增) */
-        .future-section {
-            background-color: #ffffff;
-        }
-        .years-later {
-            font-size: 3rem;
-            color: #888;
-            margin-bottom: 20px;
-        }
-        .maybe-me {
-            font-size: 2rem;
-            color: #2e8b57;
-            margin-bottom: 40px;
-        }
+        /* 第六屏：Years later */
+        .future-section { background-color: #ffffff; }
+        .years-later { font-size: 3rem; color: #888; margin-bottom: 20px; }
+        .maybe-me { font-size: 2rem; color: #2e8b57; margin-bottom: 40px; }
         .future-image {
-            width: 80%;
-            max-width: 400px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            margin-bottom: 20px;
+            width: 80%; max-width: 400px; border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15); margin-bottom: 20px;
         }
-        .future-name {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 40px;
-        }
-        .future-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #555;
+        .future-name { font-size: 2rem; font-weight: bold; color: #333; margin-bottom: 40px; }
+
+        /* 【修改点】三个并列要点的排版 */
+        .future-list-container {
+            text-align: left;
             max-width: 600px;
+            width: 90%;
+            margin: 0 auto;
         }
-        .future-text p {
-            margin-bottom: 15px;
+        .future-list {
+            list-style: none; /* 去掉默认的小黑点 */
+            padding: 0;
+            margin: 0;
         }
-        .future-text .big-word {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2e8b57;
+        .future-list li {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            padding: 15px 20px;
+            background: #f9fdfa; /* 极浅的绿色背景，区分区块 */
+            border-left: 5px solid #2e8b57; /* 左侧绿色粗线，强调并列感 */
+            border-radius: 0 10px 10px 0;
+            color: #444;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+        }
+        .future-list li strong {
+            color: #2e8b57; /* 加粗文字用绿色突出 */
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
         }
 
     </style>
@@ -189,7 +141,7 @@
 
     <!-- 第三屏：Real self -->
     <section>
-        <h3 class="section-title">Well I prefer my realself╮(￣▽￣"")╭</h3>
+        <h3 class="section-title">Well I prefer my real self╮(￣▽￣"")╭</h3>
         <div class="image-container">
             <img src="4172.JPG" alt="我的真人照片">
         </div>
@@ -212,19 +164,29 @@
         </div>
     </section>
 
-    <!-- 第六屏：Years later (新增) -->
+    <!-- 第六屏：Years later -->
     <section class="future-section">
-        <!-- 注意：将 image3.jpg 替换为你上传的第三张图片名字 -->
         <div class="years-later fade-in-text">Years later……</div>
-        <div class="maybe-me fade-in-text delay-1">May be this will be me?</div>
+        <div class="maybe-me fade-in-text delay-1">May be this will be me?٩(๑>◡<๑)۶</div>
         
-        <img src="去除图片水印(2).png" alt="未来的我" class="future-image fade-in-text delay-2">
+        <!-- 注意：将 image3.jpg 替换为你上传的第三张图片名字 -->
+        <img src="去除图片水印 (2).png" alt="未来的我" class="future-image fade-in-text delay-2">
         <div class="future-name fade-in-text delay-2">Yeqing Zhang 2.0</div>
         
-        <div class="future-text fade-in-text delay-3">
-            <p class="big-word">Keep going upwards</p>
-            <p>Lever-up my academic capability and the control over my own life.</p>
-            <p>New: I welcome everything new to enter into my life ---- with vase possibility !!!!</p>
+        <div class="future-list-container fade-in-text delay-3">
+            <ul class="future-list">
+                <li>
+                    <strong>Keep going upwards</strong>
+                </li>
+                <li>
+                    <strong>Lever-up</strong>
+                    My academic capability and the control over my own life.
+                </li>
+                <li>
+                    <strong>New</strong>
+                    I welcome everything new to enter into my life —— with <em>vast</em> possibility !!!!(ノ◕ヮ◕)ノ:･ﾟ✧
+                </li>
+            </ul>
         </div>
     </section>
 
@@ -241,8 +203,7 @@
                 }
             }
 
-            // 【改动在这里】放慢了自动下滑速度
-            // 4000 代表 4 秒，现在我改成了 7000（7秒），你可以随时修改这个数字
+            // 放慢自动下滑速度：7000 毫秒（7秒）
             let scrollInterval = setInterval(autoScroll, 7000);
 
             // 如果用户手动滚动了页面，就取消自动滚动
