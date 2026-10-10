@@ -9,7 +9,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #f5fff8;
+            background-color: #f5fff8; /* 非常浅的绿色背景 */
             font-family: 'Arial', 'Microsoft YaHei', sans-serif;
             color: #333333;
             text-align: center;
@@ -18,41 +18,41 @@
 
         /* 每一屏的通用设置 */
         section {
-            min-height: 100vh;
+            min-height: 100vh; /* 每一屏都占满整个屏幕高度 */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 40px 20px;
+            padding: 60px 20px;
             box-sizing: border-box;
         }
 
-        /* 动画效果：从上往下掉落 */
-        @keyframes slideDown {
-            0% { opacity: 0; transform: translateY(-50px); }
-            100% { opacity: 1; transform: translateY(0); }
+        /* 2. 滚动触发动画的核心CSS */
+        /* 默认状态：透明，且向下偏移一点 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            /* 过渡动画：1.2秒，平滑缓动 */
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+        }
+        
+        /* 激活状态：当JS检测到元素进入屏幕时，会加上这个类 */
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* 动画效果：缓慢浮现（淡入） */
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        .animate-text { animation: slideDown 1.2s ease-out both; }
-        .fade-in-text { animation: fadeIn 2s ease-in both; }
-
-        .delay-1 { animation-delay: 0.5s; }
-        .delay-2 { animation-delay: 2s; }
-        .delay-3 { animation-delay: 4s; }
-        .delay-4 { animation-delay: 6s; }
+        /* 如果你想让同一屏里的不同元素有先后顺序（延迟），可以加延时 */
+        .delay-1 { transition-delay: 0.3s; }
+        .delay-2 { transition-delay: 0.6s; }
+        .delay-3 { transition-delay: 0.9s; }
 
         /* 第一屏：Hero Display */
         .hero-title { font-size: 4rem; margin: 0; color: #2e8b57; }
         .hero-name { font-size: 3rem; margin-top: 20px; font-weight: bold; }
 
         /* 第二、三屏：图片展示 */
-        .section-title { font-size: 2rem; margin-bottom: 20px; color: #444; }
+        .section-title { font-size: 2rem; margin-bottom: 30px; color: #444; }
         .image-container img {
             width: 80%; max-width: 500px; border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.15);
@@ -91,71 +91,59 @@
         }
         .future-name { font-size: 2rem; font-weight: bold; color: #333; margin-bottom: 40px; }
 
-        /* 【修改点】三个并列要点的排版 */
+        /* 三个并列要点的排版 */
         .future-list-container {
-            text-align: left;
-            max-width: 600px;
-            width: 90%;
-            margin: 0 auto;
+            text-align: left; max-width: 600px; width: 90%; margin: 0 auto;
         }
         .future-list {
-            list-style: none; /* 去掉默认的小黑点 */
-            padding: 0;
-            margin: 0;
+            list-style: none; padding: 0; margin: 0;
         }
         .future-list li {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            padding: 15px 20px;
-            background: #f9fdfa; /* 极浅的绿色背景，区分区块 */
-            border-left: 5px solid #2e8b57; /* 左侧绿色粗线，强调并列感 */
-            border-radius: 0 10px 10px 0;
-            color: #444;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+            font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px;
+            padding: 15px 20px; background: #f9fdfa;
+            border-left: 5px solid #2e8b57; border-radius: 0 10px 10px 0;
+            color: #444; box-shadow: 0 3px 10px rgba(0,0,0,0.03);
         }
         .future-list li strong {
-            color: #2e8b57; /* 加粗文字用绿色突出 */
-            display: block;
-            margin-bottom: 5px;
-            font-size: 1.2rem;
+            color: #2e8b57; display: block; margin-bottom: 5px; font-size: 1.2rem;
         }
-
     </style>
 </head>
 <body>
 
     <!-- 第一屏：Hero -->
     <section>
-        <h1 class="hero-title animate-text">Hero display</h1>
-        <h2 class="hero-name animate-text delay-1">章叶青</h2>
+        <h1 class="hero-title reveal">Hero display</h1>
+        <h2 class="hero-name reveal delay-1">章叶青</h2>
     </section>
 
     <!-- 第二屏：This is me -->
     <section>
-        <h3 class="section-title">This is me(*≧ω≦)</h3>
-        <div class="image-container">
+        <h3 class="section-title reveal">This is me(*≧ω≦)</h3>
+        <div class="image-container reveal delay-1">
+            <!-- 强烈建议把图片重命名为 image1.png -->
             <img src="去除图片水印.png" alt="我的二次元形象">
         </div>
     </section>
 
     <!-- 第三屏：Real self -->
     <section>
-        <h3 class="section-title">Well I prefer my real self╮(￣▽￣"")╭</h3>
-        <div class="image-container">
+        <h3 class="section-title reveal">Well I prefer my realself╮(￣▽￣"")╭</h3>
+        <div class="image-container reveal delay-1">
+            <!-- 强烈建议把图片重命名为 image2.jpg -->
             <img src="4172.JPG" alt="我的真人照片">
         </div>
     </section>
 
     <!-- 第四屏：Slogan -->
     <section class="slogan-section">
-        <div class="slogan-title">My Slogan:</div>
-        <div class="slogan-text">Strive for excellence</div>
+        <div class="slogan-title reveal">My Slogan:</div>
+        <div class="slogan-text reveal delay-1">Strive for excellence</div>
     </section>
 
     <!-- 第五屏：More about me -->
     <section>
-        <div class="about-content">
+        <div class="about-content reveal">
             <h2>More about me</h2>
             <p><span class="highlight">1. 学习使我快乐：</span>作为一个十分特殊的人，我真心喜欢学习。它能带给我满足感，尤其是学习新知识和最终复习的时候。</p>
             <p><span class="highlight">2. 运动使我疯狂：</span>作为一个热爱体育的girl，每天的跑步时刻是我身心最轻盈的时候，让我一天积累的疲惫都一扫而空。</p>
@@ -166,14 +154,14 @@
 
     <!-- 第六屏：Years later -->
     <section class="future-section">
-        <div class="years-later fade-in-text">Years later……</div>
-        <div class="maybe-me fade-in-text delay-1">May be this will be me?٩(๑>◡<๑)۶</div>
+        <div class="years-later reveal">Years later……</div>
+        <div class="maybe-me reveal delay-1">May be this will be me?</div>
         
-        <!-- 注意：将 image3.jpg 替换为你上传的第三张图片名字 -->
-        <img src="去除图片水印 (2).png" alt="未来的我" class="future-image fade-in-text delay-2">
-        <div class="future-name fade-in-text delay-2">Yeqing Zhang 2.0</div>
+        <!-- 强烈建议把图片重命名为 image3.png -->
+        <img src="去除图片水印 (2).png" alt="未来的我" class="future-image reveal delay-2">
+        <div class="future-name reveal delay-2">Yeqing Zhang 2.0</div>
         
-        <div class="future-list-container fade-in-text delay-3">
+        <div class="future-list-container reveal delay-3">
             <ul class="future-list">
                 <li>
                     <strong>Keep going upwards</strong>
@@ -184,13 +172,38 @@
                 </li>
                 <li>
                     <strong>New</strong>
-                    I welcome everything new to enter into my life —— with <em>vast</em> possibility !!!!(ノ◕ヮ◕)ノ:･ﾟ✧
+                    I welcome everything new to enter into my life —— with <em>vast</em> possibility !!!!
                 </li>
             </ul>
         </div>
     </section>
 
-    
+    <!-- JavaScript：用 Intersection Observer 检测滚动，触发动画 -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 获取所有带有 reveal 类的元素
+            const reveals = document.querySelectorAll('.reveal');
+
+            // 创建一个观察器，检测元素是否进入屏幕
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // 如果元素进入了屏幕，添加 active 类触发动画
+                        entry.target.classList.add('active');
+                        // 动画只播放一次，播放完后停止观察该元素
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15 // 元素有 15% 出现在屏幕里时，就触发动画
+            });
+
+            // 让观察器开始盯着这些元素
+            reveals.forEach(reveal => {
+                observer.observe(reveal);
+            });
+        });
+    </script>
 
 </body>
 </html>
